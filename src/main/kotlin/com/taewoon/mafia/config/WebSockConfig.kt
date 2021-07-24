@@ -11,13 +11,13 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 class WebSockConfig :WebSocketMessageBrokerConfigurer {
 
     override fun configureMessageBroker(registry: MessageBrokerRegistry) {
-        registry.enableSimpleBroker("/sub")
-        registry.setApplicationDestinationPrefixes("/pub")
+        registry.enableSimpleBroker("/topic")
+        registry.setApplicationDestinationPrefixes("/app")
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/ws-stomp")
-            .setAllowedOrigins("*")
+        registry.addEndpoint("/websocket")
+//            .setAllowedOrigins("*")
             .withSockJS()
     }
 }
